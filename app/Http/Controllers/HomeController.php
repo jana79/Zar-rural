@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Almacena el nombre de usuario logueado en la variable $user
         $user=Auth::user();
         return view('home', compact('user'));
     }

@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'email';
     protected $fillable = [
         'id_user','name', 'email', 'password'
     ];
@@ -37,7 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    // Unión de la tabla users de Laravel con la tabla Usuarios de la app
+    // Unión de la tabla users de Laravel con la tabla usuarios de la app
     public function usuario(){
         return $this->hasOne('App\Usuario', 'email', 'email');
     }
