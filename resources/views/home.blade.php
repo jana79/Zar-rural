@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Hola {{$user->name}}. ¡Ya estás identificado en Zar~rural!
                 </div>
             </div>
         </div>
