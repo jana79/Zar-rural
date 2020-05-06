@@ -15,12 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     
-   /* if (Auth::check()) {
-        return "Estás logueado";
-    } else {
-        return "No estás logueado";
-    }*/
-    return view('welcome');
+    return view('inicio');
 });
 
 Auth::routes();

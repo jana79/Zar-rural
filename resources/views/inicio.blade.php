@@ -1,8 +1,9 @@
-@extends('layouts.layoutGral')
+@extends("layouts.layoutGral")
 
-@section('infoGeneral')
+
+@section("infoGeneral")
 <div>
-    <h1>Bienvenido a Zar~rural, {{$user->nombre}}</h1>
+    <h1>Bienvenido a Zar~rural</h1>
 </div>
 <p class="lead text-center">Si estás buscando un plan para el fin de semana, 
     Semana Santa o incluso vacaciones, ¡estás en el sitio correcto!.</p>
@@ -57,3 +58,4 @@
 </div>
 
 @endsection
+

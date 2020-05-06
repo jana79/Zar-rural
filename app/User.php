@@ -6,18 +6,21 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     use Notifiable;
+
+    protected $primaryKey = 'id_user';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $primaryKey = 'email';
     protected $fillable = [
-        'id_user','name', 'email', 'password'
+        'id_user', 'nombre', 'apellidos', 'email',
+        'name', 'password', 'admin', 'colaborador', 'bloqueado'
+           
     ];
 
     /**
@@ -37,10 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
+    /*
     // Unión de la tabla users de Laravel con la tabla usuarios de la app
-    public function usuario(){
+    public function usuario() {
         return $this->hasOne('App\Usuario', 'email', 'email');
     }
-    
+     */
+     
+
 }
