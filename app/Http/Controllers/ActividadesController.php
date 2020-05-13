@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Actividad as Actividad;
+use App\Poblacion as Poblacion;
 
-class ActividadesController extends Controller
-{
+
+class ActividadesController extends Controller {
+
+    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $user = Auth::user();
+        if(is_null($user)){
+            return view('actividades.index');
+        }
+        if($user->colaborador == 0 || !isset($user)){
+             return view('actividades.index');
+        }else{
+            return view('actividades.index_col');
+        }
+       
     }
 
     /**
@@ -21,9 +35,10 @@ class ActividadesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        $user = Auth::user();
+        $poblaciones=Poblacion::all();
+        return view('actividades.create', compact('user', 'poblaciones'));
     }
 
     /**
@@ -32,9 +47,27 @@ class ActividadesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        //leemos los datos del formulario
+        $datos=$request->all();
+        $portada = $request->file('portada');
+        if(isset($portada)){
+            $nombre=$portada->getClientOriginalName();
+            $portada->move('images', $nombre);
+            $datos['portada']=$nombre;
+        }
+        //creamos una nueva actividad
+        $actividad = new Actividad($datos);
+        //Guardamos en la BD
+        
+        $actividad->save();
+        // mensaje de informacion al usuario
+        if($actividad){
+            return redirect('actividades')->with('success', 'Actividad añadida con éxito.');
+        }else{
+            return redirect('actividades')->with('error', 'No se ha podido añadir la actividad.');
+        }
+        
     }
 
     /**
@@ -43,9 +76,17 @@ class ActividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+        //Mostramos una población concreta con sus actividades
+        $actividad= Actividad::find($id);
+        $user = Auth::user();
+        
+        if($user->colaborador == 0 ||is_null($user)){
+             return view('actividades.actividad',compact('actividad'));
+        }else{
+            return view('actividades.actividad_col',compact('actividad'));
+        }
+    
     }
 
     /**
@@ -54,8 +95,7 @@ class ActividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -66,9 +106,8 @@ class ActividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        return view('actividad.update');
     }
 
     /**
@@ -77,8 +116,8 @@ class ActividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        return view('actividad.delete');
     }
+
 }

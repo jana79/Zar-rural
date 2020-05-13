@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
   |--------------------------------------------------------------------------
@@ -13,11 +15,39 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
+//Inicio
 Route::get('/', function () {
-    
+   
     return view('inicio');
 });
 
+// Autenticación
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Home
+Route::get('/home', 'HomeController@index');
+
+//Poblaciones
+Route::resource('/poblaciones', 'PoblacionesController');
+
+
+//Contacta
+Route::get('/contacta', function(){
+    return view("contacta");
+});
+//Colabora
+Route::get('/colabora', function(){
+    return view("colabora");
+});
+
+// Actividades
+Route::resource('/actividades', 'ActividadesController');
+
+//Imágenes
+Route::resource('/imagen', 'ImagenesController');
+
+//Comentarios
+Route::resource('/comentario', 'ComentariosController');
+
+//Admin
+Route::resource('/admin', 'AdminController');

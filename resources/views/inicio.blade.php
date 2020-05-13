@@ -22,7 +22,7 @@
             del siglo XX obra del artista aragonés Elías García Martínez y 
             ubicada en el Santuario de Misericordia.</p>
         <div class="d-flex justify-content-center py-3">
-            <a href="http://localhost:8000/poblaciones/borja/ecceHomo" class="btn btn-verde">
+            <a href="http://localhost:8000/actividades/1" class="btn btn-verde">
                 Ver actividad
             </a>
         </div>
@@ -31,10 +31,10 @@
         <h4 class="h4 pb-3 pt-3  text-center verde">Monasterio de Piedra</h4>
         <img class="img-fluid" src="{{asset('images/monPiedra.jpg')}}" alt="Monasterio de Piedra">
         <p class="pt-4">En la localidad de Nuévalos, a escasos kilómetros de Calatayud, 
-                    se emplaza el famoso Monasterio de Piedra, un antiguo cenobio 
-                    cisterciense ubicado en un hermoso parque natural repleto de 
-                    cascadas, bellísimos saltos de agua y grutas. Se trata de uno 
-                    de los parajes más bellos y visitados de Aragón.</p>
+            se emplaza el famoso Monasterio de Piedra, un antiguo cenobio 
+            cisterciense ubicado en un hermoso parque natural repleto de 
+            cascadas, bellísimos saltos de agua y grutas. Se trata de uno 
+            de los parajes más bellos y visitados de Aragón.</p>
         <div class="d-flex justify-content-center py-3">
             <a href="http://localhost:8000/poblaciones/nuevalos/monPiedra" class="btn btn-verde">
                 Ver actividad

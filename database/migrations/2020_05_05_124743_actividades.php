@@ -17,11 +17,11 @@ class Actividades extends Migration {
             $table->string('categoria');
             $table->text('descripcion_actividad');
             $table->string('portada');
-            $table->unsignedBigInteger('id_poblacion');
-            $table->foreign('id_poblacion')
+            $table->unsignedBigInteger('poblacion_id');
+            $table->foreign('poblacion_id')
                     ->references('id_poblacion')->on('poblaciones');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
                     ->references('id_user')->on('users');
             $table->timestamps();
         });

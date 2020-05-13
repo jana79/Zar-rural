@@ -20,7 +20,6 @@ class User extends Authenticatable {
     protected $fillable = [
         'id_user', 'nombre', 'apellidos', 'email',
         'name', 'password', 'admin', 'colaborador', 'bloqueado'
-           
     ];
 
     /**
@@ -41,12 +40,22 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    /*
-    // Unión de la tabla users de Laravel con la tabla usuarios de la app
-    public function usuario() {
-        return $this->hasOne('App\Usuario', 'email', 'email');
+    //relación 1:N con actividades
+    public function actividades() {
+
+        return $this->hasMany("App\Actividad", "user_id", "id_user");
     }
-     */
-     
+
+    //relación 1:N con comentarios
+    public function comentarios() {
+
+        return $this->hasMany("App\Comentario", "user_id", "id_user");
+    }
+
+    //relación 1:N con imágenes
+    public function imagenes() {
+
+        return $this->hasMany("App\Imagen", "user_id", "id_user");
+    }
 
 }
