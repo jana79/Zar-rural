@@ -9,6 +9,8 @@ html {
     min-height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 19px;
+
 }
 body {
     margin-bottom: 80px; /* Margin bottom by footer height */
@@ -28,6 +30,9 @@ h1 {
     padding-bottom: 15px;
     color:#006C11;
 }
+
+
+    
 
 body > .container {
     padding: 40px;

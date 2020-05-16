@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Actividad as Actividad;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -21,17 +22,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        //Almacena el nombre de usuario logueado en la variable $user
-        $user=Auth::user();
-        if($user->id_user == 1){
+    public function index() {
+       
+        $actividades = Actividad::all();
+        $contador = 3;
+        $user = Auth::user();
+        
+        if ($user->id_user == 1) {
             return redirect('admin');
-        }else{
-            return view('home', compact('user'));
+        } else {
+            return view('home', compact('actividades', 'contador'));
         }
         
     }
-    
- 
+
 }

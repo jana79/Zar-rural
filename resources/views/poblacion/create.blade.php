@@ -12,7 +12,7 @@
 
     <div>
         <form id="formularioPoblacion" method="POST" class="pb-5" 
-              action="{{route("poblaciones.store")}}"
+              action="{{route("poblacion.store")}}"
               enctype="multipart/form-data">
             @csrf
             <div class="form-group">

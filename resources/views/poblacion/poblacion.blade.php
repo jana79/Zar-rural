@@ -27,11 +27,11 @@
                     <?php $muestra=Str::limit($actividad->descripcion_actividad, 205, "...");?>
                     <div class="col-12 col-md-4">    
                         <h4 class="h4 pb-3 pt-3 text-center verde">{{$actividad->titulo}}</h4>
-                        <img class="img-fluid" src="images/{{$actividad->portada}}" 
+                        <img class="img-fluid" src="{{asset('images/'.$imagen_poblacion)}}" 
                              alt="{{$actividad->titulo}}">
                         <p class="pt-4">{{$muestra}}</p>
                         <div class="d-flex justify-content-center py-3">
-                            <a href="{{route('actividades.show',$actividad->id_actividad)}}"
+                            <a href="{{route('actividad.show',$actividad->id_actividad)}}"
                                class="btn btn-verde">Ver actividad</a>
                         </div>
                     </div>

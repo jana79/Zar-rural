@@ -3,49 +3,27 @@
 
 @section("infoGeneral")
 
-<h1>Nueva Actividad</h1>
-<!-- PARA BORRAR-->
-<h1>{{ $actividad ?? '' }}</h1>
+<h1>Editar Actividad</h1>
 
-<p class="text-center">Utiliza el formulario para añadir una nueva actividad.</p>
-<div class="container row justify-content-md-center">
-    @if(session('success'))
-    <div class="col-12 col-md-6">
-        <div class="alert  alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-    @endif
-    @if (session('error'))
-    <div class="col-sm-12 col-md-6">
-        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-    @endif
-</div>
+<p class="text-center">Utiliza el formulario para editar la actividad.</p>
 <div class="container mt-5 mb-5 shadow col-md-6 pl-5 pr-5">					
-    <h2 class="text-center py-5">Añadir nueva actividad</h2>
+    <h2 class="text-center py-5">Editar actividad</h2>
     <div>
-        <form id="formularioActividad" method="POST" class="pb-5" 
-              action="{{route("actividades.store")}}"
+        <form id="formularioEditarActividad" method="POST" class="pb-5" 
+              action="{{route('actividad.update', $actividad->id_actividad)}}"
               enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
                 <label for="titulo">Título *</label>
-                <input type="text" class="form-control" id="titulo" name="titulo"> 
+                <input type="text" class="form-control" id="titulo" 
+                       name="titulo" value="{{$actividad->titulo}}"> 
 
             </div>
             <div class="form-group">
                 <label for="categoria">Elige la categoría *</label>
                 <select id="categoria" class="form-control" name="categoria">
-                    <option></option>
+                    <option>{{$actividad->categoria}}</option>
                     <option>Naturaleza</option>
                     <option>Ocio</option>
                     <option>Patrimonio</option>
@@ -55,18 +33,22 @@
             <div class="form-group">
                 <label for="descripcion">Descripción *</label>
                 <textarea class="form-control" id="descripcion_actividad" 
-                          name="descripcion_actividad"></textarea>
+                          name="descripcion_actividad">{{$actividad->descripcion_actividad}}
+                </textarea>
             </div>
             <div class="form-group">
                 <label for="portada">Imagen de portada *</label>
                 <input type="file" class="form-control-file" id="portada" 
-                       name="portada">
+                       name="portada" value="{{$actividad->portada}}">
             </div>
             <div class="form-group">
                 <label for="poblacion">Elige la población *</label>
                 <select id="poblacion_id" class="form-control" name="poblacion_id">
-                    <option></option>
+                   
                     @foreach($poblaciones as $poblacion)
+                    @if($actividad->poblacion_id == $poblacion->id_poblacion)
+                    <option value="{{$actividad->poblacion_id}}">{{$poblacion->nombre_poblacion}}</option>
+                    @endif
                     <option value="{{$poblacion->id_poblacion}}">
                         {{$poblacion->nombre_poblacion}}
                     </option>
@@ -99,4 +81,3 @@
 </div>	     
 
 @endsection
-

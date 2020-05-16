@@ -13,7 +13,7 @@
     de actividades o buscar entre las actividades disponibles 
     aquella que te apetezca probar. ¡Esperamos que disfrutes!</p>
 <div class="row container mx-auto pt-3 d-flex justify-content-center">
-    <a href="{{route("poblaciones.create")}}" 
+    <a href="{{route("poblacion.create")}}" 
        class="btn btn-verde ml-3 mr-3">
         Crear poblacion
     </a>

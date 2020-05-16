@@ -40,7 +40,7 @@
                         {{$poblacion->nombre_poblacion[0]}}
                     </span></li>
                 <li class="col-12 col-md-6 col-lg-4">
-                    <a href="{{route('poblaciones.show',$poblacion->id_poblacion)}}">
+                    <a href="{{route('poblacion.show',$poblacion->id_poblacion)}}">
                         {{$poblacion->nombre_poblacion}}</a></li>
 
                 @endforeach             

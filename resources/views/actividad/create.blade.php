@@ -4,33 +4,23 @@
 @section("infoGeneral")
 
 <h1>Nueva Actividad</h1>
-
 <p class="text-center">Utiliza el formulario para añadir una nueva actividad.</p>
 <div class="container mt-5 mb-5 shadow col-md-6 pl-5 pr-5">					
     <h2 class="text-center py-5">Añadir nueva actividad</h2>
     <div>
-        <form id="formularioActividad" method="get" class="pb-5" 
-              action="{{url('/actividad')}}">
+        <form id="formularioActividad" method="POST" class="pb-5" 
+              action="{{route("actividad.store")}}"
+              enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="titulo">Título *</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" 
-                       placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="portada">Imagen de portada *</label>
-                <input type="file" class="form-control-file" id="portada">
-            </div>
-            <div class="form-group">
-                <label for="poblacion">Elige la población *</label>
-                <select id="poblacion" class="form-control">
-                    <option >Borja</option>
-                    <option>Calatayud</option>
-                </select>
+                <input type="text" class="form-control" id="titulo" name="titulo"> 
+
             </div>
             <div class="form-group">
                 <label for="categoria">Elige la categoría *</label>
-                <select id="categoria" class="form-control">
+                <select id="categoria" class="form-control" name="categoria">
+                    <option></option>
                     <option>Naturaleza</option>
                     <option>Ocio</option>
                     <option>Patrimonio</option>
@@ -38,14 +28,30 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="descripcion">Descripción de la actividad *</label>
-                <textarea class="form-control" id="descripcion" name="descripcion">
-                </textarea>
+                <label for="descripcion">Descripción *</label>
+                <textarea class="form-control" id="descripcion_actividad" 
+                          name="descripcion_actividad"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="portada">Imagen de portada *</label>
+                <input type="file" class="form-control-file" id="portada" 
+                       name="portada">
+            </div>
+            <div class="form-group">
+                <label for="poblacion">Elige la población *</label>
+                <select id="poblacion_id" class="form-control" name="poblacion_id">
+                    <option></option>
+                    @foreach($poblaciones as $poblacion)
+                    <option value="{{$poblacion->id_poblacion}}">
+                        {{$poblacion->nombre_poblacion}}
+                    </option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <div>
-                    <input type="hidden" class="form-control" id="nom_usuario" name="nom_usuario" 
-                           value="{{$user->name}}">
+                    <input type="hidden" class="form-control" id="user_id" name="user_id" 
+                           value="{{$user->id_user}}">
                 </div>
             </div>
             <div class="form-group">

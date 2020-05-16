@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
 // Validación del formulario para añadir una actividad
     $("#formularioActividad").validate({
         rules: {

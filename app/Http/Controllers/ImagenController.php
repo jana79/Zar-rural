@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Actividad as Actividad;
+use App\Imagen as Imagen;
 
-class ImagenesController extends Controller
+class ImagenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +26,13 @@ class ImagenesController extends Controller
      */
     public function create()
     {
-        //
+        
+    }
+    
+    public function add($id) {
+        $user = Auth::user();
+        $actividad= Actividad::find($id);
+        return view('imagen.create', compact('user', 'actividad'));
     }
 
     /**
@@ -34,7 +43,25 @@ class ImagenesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Leemos los datos del formulario
+        $datos = $request->all();
+        // Guardamos el nombre de la ruta a la imagen en la carpeta 'images'
+        $img = $request->file('img');
+        if (isset($img)) {
+            $nombre = $img->getClientOriginalName();
+            $img->move('images', $nombre);
+            $datos['img'] = $nombre;
+        }
+        // Creamos una nueva imagen
+        $imagen = new Imagen($datos);
+        // Guardamos en la BD        
+        $imagen->save();
+        // Mensaje de informacion al usuario
+        if ($imagen) {
+            return redirect('actividad/' . $datos['actividad_id'])->with('success', 'Imagen añadida con éxito.');
+        } else {
+            return redirect('actividad/' . $datos['actividad_id'])->with('error', 'No se ha podido añadir la imagen.');
+        }
     }
 
     /**

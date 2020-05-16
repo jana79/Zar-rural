@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Poblacion as Poblacion;
 
 
-class PoblacionesController extends Controller {
+class PoblacionController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class PoblacionesController extends Controller {
     public function index() {
         // Mostramos el listado de poblaciones de la base de datos
         $poblaciones = Poblacion::all();
-        return view('poblaciones.poblaciones', compact('poblaciones'));
+        return view('poblacion.poblaciones', compact('poblaciones'));
     }
     
     /**
@@ -27,7 +27,7 @@ class PoblacionesController extends Controller {
      */
     public function create() {
         
-        return view('poblaciones.create');
+        return view('poblacion.create');
     }
     
     /**
@@ -45,20 +45,22 @@ class PoblacionesController extends Controller {
         $imagen_poblacion= Poblacion::find($id)->imagen_poblacion;
         
         $user = Auth::user();
-       
-        if($user->colaborador == 0 || is_null($user)){
-             return view('poblaciones.poblacion',compact('actividades',
-                'id_poblacion','nombre_poblacion','descripcion_poblacion',
-                'imagen_poblacion'));
-        }else{
-            return view('poblaciones.poblacion_col',compact('actividades',
+        
+        if(is_null($user)){
+            return view('poblacion.poblacion',compact('actividades',
                 'id_poblacion','nombre_poblacion','descripcion_poblacion',
                 'imagen_poblacion'));
         }
-    
-        return view('poblaciones.poblacion', compact('actividades',
+       
+        if($user->colaborador == 0){
+             return view('poblacion.poblacion',compact('actividades',
                 'id_poblacion','nombre_poblacion','descripcion_poblacion',
                 'imagen_poblacion'));
+        }else{
+            return view('poblacion.poblacion_col',compact('actividades',
+                'id_poblacion','nombre_poblacion','descripcion_poblacion',
+                'imagen_poblacion'));
+        }
     
     }
     

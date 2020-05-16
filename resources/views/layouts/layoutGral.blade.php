@@ -55,74 +55,74 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-            </div>
+           </div>
         </li>
         @endguest
 
     </div>
 </div>
 
-<!-- Menú de navegación -->
-<section>
-    @yield("menu")
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav container d-flex justify-content-between">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/poblaciones')}}">Poblaciones</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/actividades')}}">Actividades</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/colabora')}}">Colabora</a>
-                </li>       
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/contacta')}}">Contacta</a>
-                </li>
-            </ul>
+    <!-- Menú de navegación -->
+    <section>
+        @yield("menu")
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav container d-flex justify-content-between">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('/poblacion')}}">Poblaciones</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('/actividad')}}">Actividades</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('/colabora')}}">Colabora</a>
+                    </li>       
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('/contacta')}}">Contacta</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <!-- Imagen fija con campo search -->
+    <section class="portada">
+        @yield("imagenBuscar")
+        <div class="row h-100 m-0 overlay">
+            <div class="col-12 my-auto">
+                <h3 class="text-center text-light">¡Encuentra planes interesantes!</h3>
+                <form class="form-inline  justify-content-center" action="http://localhost:8000/poblaciones/borja">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Borja">
+                    <button class=" btn btn-verde" type="submit">Buscar</button>
+                </form>
+            </div>     				
         </div>
-    </nav>
-</section>
-<!-- Imagen fija con campo search -->
-<section class="portada">
-    @yield("imagenBuscar")
-    <div class="row h-100 m-0 overlay">
-        <div class="col-12 my-auto">
-            <h3 class="text-center text-light">¡Encuentra planes interesantes!</h3>
-            <form class="form-inline  justify-content-center" action="http://localhost:8000/poblaciones/borja">
-                <input class="form-control mr-sm-2" type="text" placeholder="Borja">
-                <button class=" btn btn-verde" type="submit">Buscar</button>
-            </form>
-        </div>     				
-    </div>
-</section>
-<!-- Contenido -->
-<section class="container mx-auto text-left">
-    @yield("infoGeneral")
+    </section>
+    <!-- Contenido -->
+    <section class="container mx-auto text-left">
+        @yield("infoGeneral")
 
-</section>
-<!-- Footer -->
-<section class="footer">
-    @yield("footer")
-    <div class="container">
-        <p>Todos los derechos reservados. Mayo 2020</p>
-    </div>            
-</section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<!--jQuery Validation -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    </section>
+    <!-- Footer -->
+    <section class="footer">
+        @yield("footer")
+        <div class="container">
+            <p>Todos los derechos reservados. Mayo 2020</p>
+        </div>            
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <!--jQuery Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="{{asset('js/custom.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 </body>
 </html>
 

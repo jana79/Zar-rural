@@ -16,6 +16,7 @@ class Comentarios extends Migration
             $table->id('id_comentario');
             $table->text('comentario');
             $table->date('fecha_comentario');
+            $table->string('autor');
             $table->unsignedBigInteger('actividad_id');
             $table->foreign('actividad_id')
                     ->references('id_actividad')->on('actividades');

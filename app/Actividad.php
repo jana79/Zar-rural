@@ -16,5 +16,11 @@ class Actividad extends Model {
         
         return $this->hasMany("App\Comentario", "actividad_id", "id_actividad");
     }
+    
+    //relación 1:N con comentarios
+    public function imagenes(){
+        
+        return $this->hasMany("App\Imagen", "actividad_id", "id_actividad");
+    }
 
 }

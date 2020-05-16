@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Actividad as Actividad;
 
 /*
   |--------------------------------------------------------------------------
@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Auth;
  */
 
 //Inicio
+//Inicio
 Route::get('/', function () {
-   
-    return view('inicio');
+    $actividades = Actividad::all();
+    $contador = 3;
+    return view('inicio', compact('actividades', 'contador'));
 });
 
 // Autenticación
@@ -28,26 +30,39 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 //Poblaciones
-Route::resource('/poblaciones', 'PoblacionesController');
-
+Route::resource('/poblacion', 'PoblacionController');
 
 //Contacta
-Route::get('/contacta', function(){
+Route::get('/contacta', function() {
     return view("contacta");
 });
+
+//Respuesta al contacto
+Route::get('/respuesta', function() {
+    return view("respuesta");
+});
+
 //Colabora
-Route::get('/colabora', function(){
+Route::get('/colabora', function() {
     return view("colabora");
 });
 
 // Actividades
-Route::resource('/actividades', 'ActividadesController');
+Route::get('/actividad/patrimonio', 'ActividadController@patrimonio');
+Route::get('/actividad/naturaleza', 'ActividadController@naturaleza');
+Route::get('/actividad/ocio', 'ActividadController@ocio');
+Route::get('/actividad/tradicion', 'ActividadController@tradicion');
+Route::resource('/actividad', 'ActividadController');
 
 //Imágenes
-Route::resource('/imagen', 'ImagenesController');
+Route::get('/imagen/{id}','ImagenController@add');
+Route::resource('/imagen', 'ImagenController');
 
 //Comentarios
-Route::resource('/comentario', 'ComentariosController');
+Route::get('/comentario/{id}','ComentarioController@add');
+Route::resource('/comentario', 'ComentarioController');
 
 //Admin
 Route::resource('/admin', 'AdminController');
+
+
