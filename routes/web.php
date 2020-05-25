@@ -44,7 +44,8 @@ Route::get('/respuesta', function() {
 
 //Colabora
 Route::get('/colabora', function() {
-    return view("colabora");
+    $user = Auth::user();
+    return view("colabora", compact('user'));
 });
 
 // Actividades
@@ -52,17 +53,24 @@ Route::get('/actividad/patrimonio', 'ActividadController@patrimonio');
 Route::get('/actividad/naturaleza', 'ActividadController@naturaleza');
 Route::get('/actividad/ocio', 'ActividadController@ocio');
 Route::get('/actividad/tradicion', 'ActividadController@tradicion');
+Route::get('/actividad/eliminar/{id}', 'ActividadController@eliminar');
 Route::resource('/actividad', 'ActividadController');
 
 //Imágenes
-Route::get('/imagen/{id}','ImagenController@add');
+Route::get('/imagen/{id}', 'ImagenController@add');
+Route::get('/imagen/eliminar/{id}', 'ImagenController@eliminar');
 Route::resource('/imagen', 'ImagenController');
 
 //Comentarios
-Route::get('/comentario/{id}','ComentarioController@add');
+Route::get('/comentario/{id}', 'ComentarioController@add');
+Route::get('/comentario/eliminar/{id}', 'ComentarioController@eliminar');
 Route::resource('/comentario', 'ComentarioController');
 
 //Admin
+Route::get('/admin/listadoUsuarios', 'AdminController@listado');
+Route::get('/admin/contenidoUsuarios/{id}', 'AdminController@contenido');
+Route::get('bloqueado/{id}', 'AdminController@bloqueado');
+Route::get('desbloqueado/{id}', 'AdminController@desbloqueado');
 Route::resource('/admin', 'AdminController');
 
 

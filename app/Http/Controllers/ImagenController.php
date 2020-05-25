@@ -7,15 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Actividad as Actividad;
 use App\Imagen as Imagen;
 
-class ImagenController extends Controller
-{
+class ImagenController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -24,14 +23,13 @@ class ImagenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         
     }
-    
+
     public function add($id) {
         $user = Auth::user();
-        $actividad= Actividad::find($id);
+        $actividad = Actividad::find($id);
         return view('imagen.create', compact('user', 'actividad'));
     }
 
@@ -41,9 +39,8 @@ class ImagenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-         // Leemos los datos del formulario
+    public function store(Request $request) {
+        // Leemos los datos del formulario
         $datos = $request->all();
         // Guardamos el nombre de la ruta a la imagen en la carpeta 'images'
         $img = $request->file('img');
@@ -70,8 +67,7 @@ class ImagenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -81,8 +77,7 @@ class ImagenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -93,9 +88,13 @@ class ImagenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
+    }
+
+    public function eliminar($id) {
+        $imagen = Imagen::findOrFail($id);
+        return view('imagen.delete', compact('imagen'));
     }
 
     /**
@@ -104,8 +103,14 @@ class ImagenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $imagen = Imagen::findOrFail($id);
+        $imagen->delete();
+        if (!isset($imagen)) {
+            return redirect('actividad/' . $imagen->actividad_id)->with('error', 'Error eliminando la imagen.');
+        } else {
+            return redirect('actividad/' . $imagen->actividad_id)->with('success', 'Imagen eliminada con éxito.');
+        }
     }
+
 }

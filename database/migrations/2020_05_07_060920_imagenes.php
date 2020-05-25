@@ -15,13 +15,16 @@ class Imagenes extends Migration
         Schema::create('imagenes', function ($table) {
             $table->id('id_img');
             $table->text('img');
-            $table->date('fecha_img');
             $table->unsignedBigInteger('actividad_id');
             $table->foreign('actividad_id')
-                    ->references('id_actividad')->on('actividades');
+                    ->references('id_actividad')
+                    ->on('actividades')
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-                    ->references('id_user')->on('users');
+                    ->references('id_user')
+                    ->on('users')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

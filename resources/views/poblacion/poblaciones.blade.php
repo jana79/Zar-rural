@@ -33,18 +33,22 @@
     <div class="row">
         <div class="col-lg-12">
             <ul id="poblaciones" class="row">
-                @foreach($poblaciones as $poblacion)
-
+                @foreach($letras as $letra)
                 <li class="col-12 sep">
                     <span>
-                        {{$poblacion->nombre_poblacion[0]}}
-                    </span></li>
+                        {{$letra}}
+                    </span>
+                </li>   
+                @foreach($poblaciones as $poblacion)
+                @if($letra ==  $poblacion->nombre_poblacion[0])
                 <li class="col-12 col-md-6 col-lg-4">
                     <a href="{{route('poblacion.show',$poblacion->id_poblacion)}}">
-                        {{$poblacion->nombre_poblacion}}</a></li>
-
+                        {{$poblacion->nombre_poblacion}}
+                    </a>
+                </li> 
+                @endif
                 @endforeach             
-
+                @endforeach        
             </ul>
         </div>
     </div>

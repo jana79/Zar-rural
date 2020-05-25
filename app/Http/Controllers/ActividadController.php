@@ -30,7 +30,7 @@ class ActividadController extends Controller {
         if (is_null($user)) {
             return view('actividad.patrimonio', compact('actividades'));
         }
-        if ($user->colaborador == 0) {
+        if ($user->colaborador == 0 || $user->bloqueado == 1) {
             return view('actividad.patrimonio', compact('actividades'));
         } else {
             return view('actividad.patrimonio_col', compact('actividades'));
@@ -48,7 +48,7 @@ class ActividadController extends Controller {
         if (is_null($user)) {
             return view('actividad.naturaleza', compact('actividades'));
         }
-        if ($user->colaborador == 0) {
+        if ($user->colaborador == 0 || $user->bloqueado == 1) {
             return view('actividad.naturaleza', compact('actividades'));
         } else {
             return view('actividad.naturaleza_col', compact('actividades'));
@@ -66,7 +66,7 @@ class ActividadController extends Controller {
         if (is_null($user)) {
             return view('actividad.ocio', compact('actividades'));
         }
-        if ($user->colaborador == 0) {
+        if ($user->colaborador == 0 || $user->bloqueado == 1) {
             return view('actividad.ocio', compact('actividades'));
         } else {
             return view('actividad.ocio_col', compact('actividades'));
@@ -84,7 +84,7 @@ class ActividadController extends Controller {
         if (is_null($user)) {
             return view('actividad.tradicion', compact('actividades'));
         }
-        if ($user->colaborador == 0) {
+        if ($user->colaborador == 0 || $user->bloqueado == 1) {
             return view('actividad.tradicion', compact('actividades'));
         } else {
             return view('actividad.tradicion_col', compact('actividades'));
@@ -138,12 +138,12 @@ class ActividadController extends Controller {
      */
     public function show($id) {
         //Mostramos una población concreta con sus actividades
-        $actividad = Actividad::find($id);
-        $imagenes = Actividad::find($id)->imagenes;
-        $comentarios = Actividad::find($id)->comentarios;
+        $actividad = Actividad::findOrFail($id);
+        $imagenes = Actividad::findOrFail($id)->imagenes;
+        $comentarios = Actividad::findOrFail($id)->comentarios;
         $user = Auth::user();
 
-        if (is_null($user)) {
+        if (is_null($user) || $user->bloqueado == 1) {
             return view('actividad.actividad', compact('actividad', 'imagenes',
                             'comentarios'));
         }
@@ -184,9 +184,12 @@ class ActividadController extends Controller {
         }else{
             return redirect('actividad/'.$actividad->id_actividad)->with('error', 'Error editando la actividad.');
         }
-        
-        
-        
+               
+    }
+    
+    public function eliminar($id){
+        $actividad = Actividad::findOrFail($id);
+        return view('actividad.delete', compact('actividad'));
     }
 
     /**
@@ -196,7 +199,13 @@ class ActividadController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        
+        $actividad = Actividad::findOrFail($id);
+        $actividad->delete();
+        if(!isset($actividad)){
+            return redirect('poblacion/'.$actividad->poblacion_id)->with('error', 'Error eliminando la actividad.');
+        }else{
+            return redirect('poblacion/'.$actividad->poblacion_id)->with('success', 'Actividad eliminada con éxito.');
+        }
     }
 
 }

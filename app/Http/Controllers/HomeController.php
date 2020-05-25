@@ -25,13 +25,12 @@ class HomeController extends Controller {
     public function index() {
        
         $actividades = Actividad::all();
-        $contador = 3;
         $user = Auth::user();
         
         if ($user->id_user == 1) {
             return redirect('admin');
         } else {
-            return view('home', compact('actividades', 'contador'));
+            return view('home', compact('actividades'));
         }
         
     }

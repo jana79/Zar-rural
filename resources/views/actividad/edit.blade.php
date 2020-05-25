@@ -43,16 +43,24 @@
             </div>
             <div class="form-group">
                 <label for="poblacion">Elige la población *</label>
+                <?php
+                foreach ($poblaciones as $poblacion) {
+                    if($poblacion->id_poblacion == $actividad->poblacion_id){
+                        $nombre = $poblacion->nombre_poblacion;
+                    }
+                }
+                ?>
                 <select id="poblacion_id" class="form-control" name="poblacion_id">
-                   
+                    <option value="{{$actividad->poblacion_id}}" checked>
+                        {{$nombre}}
+                    </option>
+                    
                     @foreach($poblaciones as $poblacion)
-                    @if($actividad->poblacion_id == $poblacion->id_poblacion)
-                    <option value="{{$actividad->poblacion_id}}">{{$poblacion->nombre_poblacion}}</option>
-                    @endif
                     <option value="{{$poblacion->id_poblacion}}">
                         {{$poblacion->nombre_poblacion}}
                     </option>
                     @endforeach
+                    
                 </select>
             </div>
             <div class="form-group">
@@ -61,19 +69,11 @@
                            value="{{$user->id_user}}">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input type="checkbox" id="politica" name="politica" value="politica" 
-                           class="form-check-input"/>
-                    <label class="form-check-label">Por favor, acepta 
-                        las condiciones del servicio</label>
-                </div>
-            </div>
             <div class="g-recaptcha pt-3" data-sitekey="6LcnkO0UAAAAAB1-wxUgq4ZAXDUSko8VCKGEUkmK"></div>
             <div class="form-group row">
                 <div class="col-sm-9 offset-sm-4 pt-5">
                     <button type="submit" class="btn btn-verde" name="submit" 
-                            value="Enviar" id= "enviar">Añadir</button>
+                            value="Editar" id= "enviar">Editar</button>
                 </div>
             </div>
         </form>

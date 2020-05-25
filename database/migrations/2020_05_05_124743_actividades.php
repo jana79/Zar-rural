@@ -19,10 +19,14 @@ class Actividades extends Migration {
             $table->string('portada');
             $table->unsignedBigInteger('poblacion_id');
             $table->foreign('poblacion_id')
-                    ->references('id_poblacion')->on('poblaciones');
+                    ->references('id_poblacion')
+                    ->on('poblaciones')
+                    ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-                    ->references('id_user')->on('users');
+                    ->references('id_user')
+                    ->on('users')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }

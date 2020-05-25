@@ -16,5 +16,12 @@ class Poblacion extends Model {
         
         return $this->hasMany("App\Actividad", "poblacion_id", "id_poblacion");
     }
+    
+    //buscador de cabecera
+//    public function buscarPoblacion($query, $nombre_poblacion){
+//        if($nombre_poblacion){
+//            return $query->where('nombre_poblacion','LIKE',"%$nombre_poblacion%");
+//        }
+//    }
 
 }

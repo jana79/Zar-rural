@@ -53,12 +53,12 @@
                             <img class="img-fluid" src="{{asset('images/'.$imagen->img)}}" 
                                  alt="{{$imagen->img}}">
                         </a>  
-                         @if($imagen->user_id == $user->id_user)
+                        @if($imagen->user_id == $user->id_user)
                         <div>
-                            <a href="#" 
+                            <a href="{{url('imagen/eliminar', $imagen->id_img)}}" 
                                class="btn btn-verde mt-3">Eliminar</a>
                         </div>
-                         @endif
+                        @endif
                     </div>
                     @endforeach
                 </div>
@@ -80,9 +80,9 @@
                 <div class="d-flex justify-content-end">
                     @if($comentario->autor == $user->name)
                     <div>
-                        <a href="#" 
+                        <a href="{{route('comentario.edit', $comentario->id_comentario)}}" 
                            class="btn btn-verde">Editar</a>
-                        <a href="#" 
+                        <a href="{{url('comentario/eliminar', $comentario->id_comentario)}}" 
                            class="btn btn-verde">Eliminar</a>
                     </div>
                     @endif

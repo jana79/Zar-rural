@@ -1,32 +1,11 @@
 @extends("layouts.layoutGral")
 
 @section("infoGeneral")
-<div class="container row justify-content-md-center">
-    @if(session('success'))
-    <div class="col-12 col-md-6">
-        <div class="alert  alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-    @endif
-    @if (session('error'))
-    <div class="col-sm-12 col-md-6">
-        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-    @endif
-</div>
-<h1>Actividades de Patrimonio</h1>
+
+<h1>Actividades de Naturaleza</h1>
 <div class="row container mx-auto pt-2">
     @foreach($actividades as $actividad)
-    @if($actividad->categoria == 'Patrimonio')
+    @if($actividad->categoria =="Naturaleza")
     <?php $muestra = Str::limit($actividad->descripcion_actividad, 205, "..."); ?>
     <div class="col-12 col-md-4">    
         <h4 class="h4 pb-3 pt-3 text-center verde">{{$actividad->titulo}}</h4>

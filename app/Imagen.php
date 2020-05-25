@@ -8,8 +8,7 @@ class Imagen extends Model {
 
     protected $primaryKey = 'id_img';
     protected $table = "imagenes";
-    protected $fillable = ['id_img', 'img', 'fecha_img',
-        'actividad_id', 'user_id'
+    protected $fillable = ['id_img', 'img','actividad_id', 'user_id'
     ];
 
 }

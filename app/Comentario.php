@@ -12,5 +12,4 @@ class Comentario extends Model {
         'actividad_id', 'user_id'
     ];
 
-
 }

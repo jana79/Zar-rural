@@ -5,7 +5,7 @@
 <h1>Actividades de Tradición</h1>
 <div class="row container mx-auto pt-2">
     @foreach($actividades as $actividad)
-    @if($actividad->categoria == 'Tradición')
+   @if($actividad->categoria =="Tradicion")
     <?php $muestra = Str::limit($actividad->descripcion_actividad, 205, "..."); ?>
     <div class="col-12 col-md-4">    
         <h4 class="h4 pb-3 pt-3 text-center verde">{{$actividad->titulo}}</h4>

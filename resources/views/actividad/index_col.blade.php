@@ -56,7 +56,7 @@
     <div class="col-12 col-md-6"> 
         <h3 class="text-center verde py-4">Tradición</h3>
         <a href="#"> 
-            <img class=" img-fluid" src="{{asset('/images/contradanza.jpg')}}" 
+            <img class=" img-fluid" src="{{asset('/images/alfonsadas.jpg')}}" 
                  alt="Tradición">
         </a>      
     </div>

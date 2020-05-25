@@ -15,7 +15,7 @@ class ComentarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        
     }
 
     /**
@@ -24,13 +24,13 @@ class ComentarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        
+
         //
     }
-    
+
     public function add($id) {
         $user = Auth::user();
-        $actividad= Actividad::find($id);
+        $actividad = Actividad::find($id);
         return view('comentario.create', compact('user', 'actividad'));
     }
 
@@ -72,7 +72,10 @@ class ComentarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $comentario = Comentario::findOrFail($id);
+        $actividad = $comentario->actividad_id;
+        $user = Auth::user();
+        return view('comentario.edit', compact('comentario', 'user','actividad'));
     }
 
     /**
@@ -83,7 +86,18 @@ class ComentarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $comentario = Comentario::findOrFail($id);
+        $comentario->update($request->all());
+        if ($comentario) {
+            return redirect('actividad/'. $comentario->actividad_id)->with('success', 'Comentario editado con éxito.');
+        } else {
+            return redirect('actividad/'. $comentario->actividad_id)->with('error', 'Error editando el comentario.');
+        }
+    }
+
+    public function eliminar($id) {
+        $comentario = Comentario::findOrFail($id);
+        return view('comentario.delete', compact('comentario'));
     }
 
     /**
@@ -93,7 +107,13 @@ class ComentarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        $comentario = Comentario::findOrFail($id);
+        $comentario->delete();
+        if (!isset($comentario)) {
+            return redirect('actividad/'. $comentario->actividad_id)->with('error', 'Error eliminando el comentario.');
+        } else {
+            return redirect('actividad/'. $comentario->actividad_id)->with('success', 'Comentario eliminado con éxito.');
+        }
     }
 
 }

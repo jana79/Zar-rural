@@ -43,11 +43,17 @@
             </div>
 
         </div>  
+        @if(!isset($user))
         <div class="col-12 d-flex justify-content-center mt-2">
             <a href="{{route('register')}}" class="btn btn-verde">
                 {{ __('Registro') }}
             </a>
         </div>
+        @else
+        <div class="mx-auto verde">
+            <h4 class="text-center">¡Gracias colaborar con Zar~rural {{$user->name}}!</h4>
+        </div>
+        @endif
     </div>
 
 </div>

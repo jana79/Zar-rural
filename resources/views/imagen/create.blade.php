@@ -15,12 +15,7 @@
             @csrf
             <div class="form-group">
                 <label for="img">Selecciona una imagen *</label>
-                <input type="file" class="form-control-file" id="imagen" name="img">
-            </div>
-            <div class="form-group">
-                <label for="fecha_img">Selecciona la fecha *</label>
-                <input type="date" class="form-control-file" id="fecha_img" 
-                       name="fecha_img">
+                <input type="file" class="form-control-file" id="img" name="img">
             </div>
             <div class="form-group">
                 <input type="hidden" class="form-control" id="actividad_id" 
@@ -30,15 +25,6 @@
                 <input type="hidden" class="form-control" id="user_id" 
                        name="user_id" value="{{$user->id_user}}">
             </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input type="checkbox" id="politica" name="politica" value="politica" 
-                           class="form-check-input"/>
-                    <label class="form-check-label">Por favor, acepta 
-                        las condiciones del servicio</label>
-                </div>
-            </div>
-            <div class="g-recaptcha pt-3" data-sitekey="6LcnkO0UAAAAAB1-wxUgq4ZAXDUSko8VCKGEUkmK"></div>
             <div class="form-group row">
                 <div class="col-sm-9 offset-sm-4 pt-5">
                     <button type="submit" class="btn btn-verde" name="submit" 
