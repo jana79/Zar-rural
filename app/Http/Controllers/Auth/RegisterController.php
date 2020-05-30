@@ -53,6 +53,7 @@ use RegistersUsers;
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                     'password' => ['required', 'string', 'min:6', 'confirmed'],
                     'colaborador' => ['required'],
+		    'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 

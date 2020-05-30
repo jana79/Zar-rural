@@ -104,7 +104,17 @@
                         las condiciones del servicio</label>
                 </div>
             </div>
-            <div class="g-recaptcha pt-3" data-sitekey="6LcnkO0UAAAAAB1-wxUgq4ZAXDUSko8VCKGEUkmK"></div>
+            <div class="form-group row">
+            	<div class="col-md-6">
+        		{!! NoCaptcha::display() !!}
+    		</div>
+	    </div>
+	    @if ($errors->has('g-recaptcha-response'))
+            	<span class="help-block text-danger" role="alert">
+        		<strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+    		</span>
+	    @endif
+
             <div class="form-group row">
                 <div class="col-sm-8 offset-sm-4 pt-5">
                     <button type="submit" class="btn btn-verde">

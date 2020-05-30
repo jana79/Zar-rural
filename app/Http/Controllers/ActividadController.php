@@ -207,5 +207,5 @@ class ActividadController extends Controller {
             return redirect('poblacion/'.$actividad->poblacion_id)->with('success', 'Actividad eliminada con éxito.');
         }
     }
-
+    
 }

@@ -34,7 +34,6 @@
                 <input type="hidden" class="form-control" id="autor" 
                        name="autor" value="{{$user->name}}">
             </div>
-            <div class="g-recaptcha pt-3" data-sitekey="6LcnkO0UAAAAAB1-wxUgq4ZAXDUSko8VCKGEUkmK"></div>
             <div class="form-group row">
                 <div class="col-sm-9 offset-sm-4 pt-5">
                     <button type="submit" class="btn btn-verde" name="submit" 

@@ -21,7 +21,7 @@ class PoblacionController extends Controller {
         return view('poblacion.poblaciones', compact('poblaciones', 'letras'));
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -82,7 +82,7 @@ class PoblacionController extends Controller {
         }
         //creamos una nueva actividad
         $poblacion = new Poblacion($datos);
-        //Guardamos en la base de 
+        //Guardamos en la base de
         $poblacion->save();
         // mensaje de informacion al usuario
         if ($poblacion) {
@@ -91,5 +91,6 @@ class PoblacionController extends Controller {
             return redirect('poblacion')->with('error', 'No se ha podido añadir la población.');
         }
     }
+
 
 }

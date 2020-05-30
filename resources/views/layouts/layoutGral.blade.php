@@ -102,9 +102,9 @@
         <div class="row h-100 m-0 overlay">
             <div class="col-12 my-auto">
                 <h3 class="text-center text-light">¡Encuentra planes interesantes!</h3>
-                <form class="form-inline  justify-content-center">
+                <form class="form-inline  justify-content-center" action="#">
                     <input class="form-control mr-sm-2"
-                            name="buscar" type="search" placeholder="Borja">
+                            name="buscar" type="text" placeholder="Busca una población">
                     <button class=" btn btn-verde" type="submit">Buscar</button>
                 </form>
             </div>     				

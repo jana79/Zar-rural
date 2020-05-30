@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Actividad as Actividad;
+use App\Poblacion as POblacion;
 
 /*
   |--------------------------------------------------------------------------
@@ -15,7 +16,6 @@ use App\Actividad as Actividad;
   |
  */
 
-//Inicio
 //Inicio
 Route::get('/', function () {
     $actividades = Actividad::all();

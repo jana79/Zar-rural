@@ -20,10 +20,8 @@ $(document).ready(function () {
             },
             poblacion_id: {
                 required: true
-            },
-            politica: {
-                required: true
             }
+            
 
         }, messages: {
             titulo: {
@@ -43,6 +41,171 @@ $(document).ready(function () {
             poblacion_id: {
                 required: "Por favor, selecciona la población"
             }
+        }, //messages
+        errorPlacement: function (error, element) {
+            error.addClass("invalid-feedback");
+            /*Colocamos el mensaje de error debajo del texto del checKbox
+             porque aparecía encima*/
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.next("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        //Mostramos colores 
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
+    // Validación del formulario para editar una actividad
+    $("#formularioEditarActividad").validate({
+        rules: {
+            titulo: {
+                required: true,
+                minlength: 6
+            },
+            categoria: {
+                required: true
+            },
+            descripcion_actividad: {
+                required: true,
+                minlength: 150
+
+            },
+            portada: {
+                required: true
+            },
+            poblacion_id: {
+                required: true
+            }
+            
+
+        }, messages: {
+            titulo: {
+                required: "Debes introducir el título de la actividad",
+                minlenght: "El título debe tener un mínimo de 6 caracteres"
+            },
+            categoria: {
+                required: "Debes seleccionar una categoría"
+            },
+            descripcion_actividad: {
+                required: "Debes introducir la descripción de la actividad",
+                minlenght: "La descripción debe tener un mínimo de 150 caracteres"
+            },
+            portada: {
+                required: "Por favor, introduce una imagen para ilustrar la actividad"
+            },
+            poblacion_id: {
+                required: "Por favor, selecciona la población"
+            }
+        }, //messages
+        errorPlacement: function (error, element) {
+            error.addClass("invalid-feedback");
+            /*Colocamos el mensaje de error debajo del texto del checKbox
+             porque aparecía encima*/
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.next("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        //Mostramos colores 
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
+    // Validación del formulario para añadir un comentario
+    $("#formularioComentario").validate({
+        rules: {
+            comentario: {
+                required: true,
+                minlength: 50
+            },
+	    fecha_comentario: {
+                required: true
+            }
+
+        }, messages: {
+            comentario: {
+                required: "Debes introducir un comentario",
+                minlenght: "El comentario debe tener un mínimo de 50 caracteres"
+            },
+	    fecha_comentario: {
+                required: "Debes introducir una fecha"
+            }
+        }, //messages
+        errorPlacement: function (error, element) {
+            error.addClass("invalid-feedback");
+            /*Colocamos el mensaje de error debajo del texto del checKbox
+             porque aparecía encima*/
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.next("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        //Mostramos colores 
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
+    $("#formularioEditarComentario").validate({
+        rules: {
+            comentario: {
+                required: true,
+                minlength: 50
+            },
+	    fecha_comentario: {
+                required: true
+            }
+
+        }, messages: {
+            comentario: {
+                required: "Debes introducir un comentario",
+                minlenght: "El comentario debe tener un mínimo de 50 caracteres"
+            },
+	    fecha_comentario: {
+                required: "Debes introducir una fecha"
+            }
+        }, //messages
+        errorPlacement: function (error, element) {
+            error.addClass("invalid-feedback");
+            /*Colocamos el mensaje de error debajo del texto del checKbox
+             porque aparecía encima*/
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.next("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        //Mostramos colores 
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
+    $("#formularioImagen").validate({
+        rules: {
+            img: {
+                required: true
+            }
+
+        }, messages: {
+            img{
+                required: "Debes introducir una imagen",
+            }
+
         }, //messages
         errorPlacement: function (error, element) {
             error.addClass("invalid-feedback");
