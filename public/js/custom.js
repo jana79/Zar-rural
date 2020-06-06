@@ -21,7 +21,7 @@ $(document).ready(function () {
             poblacion_id: {
                 required: true
             }
-            
+
 
         }, messages: {
             titulo: {
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         },
-        //Mostramos colores 
+        //Mostramos colores
         highlight: function (element, errorClass, validClass) {
             $(element).addClass("is-invalid").removeClass("is-valid");
         },
@@ -81,7 +81,7 @@ $(document).ready(function () {
             poblacion_id: {
                 required: true
             }
-            
+
 
         }, messages: {
             titulo: {
@@ -112,7 +112,7 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         },
-        //Mostramos colores 
+        //Mostramos colores
         highlight: function (element, errorClass, validClass) {
             $(element).addClass("is-invalid").removeClass("is-valid");
         },
@@ -150,7 +150,7 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         },
-        //Mostramos colores 
+        //Mostramos colores
         highlight: function (element, errorClass, validClass) {
             $(element).addClass("is-invalid").removeClass("is-valid");
         },
@@ -187,7 +187,7 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         },
-        //Mostramos colores 
+        //Mostramos colores
         highlight: function (element, errorClass, validClass) {
             $(element).addClass("is-invalid").removeClass("is-valid");
         },
@@ -202,7 +202,7 @@ $(document).ready(function () {
             }
 
         }, messages: {
-            img{
+            img: {
                 required: "Debes introducir una imagen",
             }
 
@@ -217,7 +217,7 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         },
-        //Mostramos colores 
+        //Mostramos colores
         highlight: function (element, errorClass, validClass) {
             $(element).addClass("is-invalid").removeClass("is-valid");
         },
@@ -265,7 +265,7 @@ $(document).ready(function () {
 //                error.insertAfter(element);
 //            }
 //        },
-//        //Mostramos colores 
+//        //Mostramos colores
 //        highlight: function (element, errorClass, validClass) {
 //            $(element).addClass("is-invalid").removeClass("is-valid");
 //        },
@@ -343,7 +343,7 @@ $(document).ready(function () {
 //                error.insertAfter(element);
 //            }
 //        },
-//        //Mostramos colores 
+//        //Mostramos colores
 //        highlight: function (element, errorClass, validClass) {
 //            $(element).addClass("is-invalid").removeClass("is-valid");
 //        },
@@ -352,4 +352,3 @@ $(document).ready(function () {
 //        }
 //    });
 });
-        

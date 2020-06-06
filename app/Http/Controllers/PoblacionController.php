@@ -80,7 +80,7 @@ class PoblacionController extends Controller {
             $imagen->move('images', $nombre);
             $datos['imagen_poblacion'] = $nombre;
         }
-        //creamos una nueva actividad
+        //creamos una nueva poblacion
         $poblacion = new Poblacion($datos);
         //Guardamos en la base de
         $poblacion->save();

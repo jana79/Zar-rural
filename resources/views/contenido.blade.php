@@ -36,7 +36,6 @@ if ($usuario->colaborador == 1) {
 <h4 class="text-center">Usuario {{$tipo}}</h4>
 <div class="container mt-5 mb-5 shadow col-12 pl-5 pr-5">
     <table class="table">
-
         <thead>
             <tr>
                 <th scope="col">Contenido</th>
@@ -59,10 +58,10 @@ if ($usuario->colaborador == 1) {
             @endif
         </tbody>
     </table>
-    <div class="col-lg-12 d-flex justify-content-end mt-4">
+    <div class="col-lg-12 d-flex justify-content-end py-5">
         <a href="{{url('admin/listadoUsuarios')}}"
            class="btn btn-verde">Volver a listado</a>
     </div>
-</div>	     
+</div>
 
 @endsection

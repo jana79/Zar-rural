@@ -20,7 +20,7 @@ class ActividadController extends Controller {
     }
 
     /**
-     * Mostramos todas las actividades 
+     * Mostramos todas las actividades
      * en la categoría de Patrimonio
      * @return type
      */
@@ -38,7 +38,7 @@ class ActividadController extends Controller {
     }
 
     /**
-     * Mostramos todas las actividades 
+     * Mostramos todas las actividades
      * en la categoría de Patrimonio
      * @return type
      */
@@ -56,7 +56,7 @@ class ActividadController extends Controller {
     }
 
     /**
-     * Mostramos todas las actividades 
+     * Mostramos todas las actividades
      * en la categoría de Patrimonio
      * @return type
      */
@@ -74,7 +74,7 @@ class ActividadController extends Controller {
     }
 
     /**
-     * Mostramos todas las actividades 
+     * Mostramos todas las actividades
      * en la categoría de Patrimonio
      * @return type
      */
@@ -120,7 +120,7 @@ class ActividadController extends Controller {
         }
         // Creamos una nueva actividad
         $actividad = new Actividad($datos);
-        // Guardamos en la BD        
+        // Guardamos en la BD
         $actividad->save();
         // Mensaje de informacion al usuario
         if ($actividad) {
@@ -178,15 +178,24 @@ class ActividadController extends Controller {
      */
     public function update(Request $request, $id) {
         $actividad = Actividad::findOrFail($id);
-        $actividad->update($request->all());
+        // Leemos los datos del formulario
+        $datos = $request->all();
+        // Guardamos el nombre de la ruta a la imagen en la carpeta 'images'
+        $portada = $request->file('portada');
+        if (isset($portada)) {
+            $nombre = $portada->getClientOriginalName();
+            $portada->move('images', $nombre);
+            $datos['portada'] = $nombre;
+        }
+        $actividad->update($datos);
         if($actividad){
             return redirect('actividad/'.$actividad->id_actividad)->with('success', 'Actividad editada con éxito.');
         }else{
             return redirect('actividad/'.$actividad->id_actividad)->with('error', 'Error editando la actividad.');
         }
-               
+
     }
-    
+
     public function eliminar($id){
         $actividad = Actividad::findOrFail($id);
         return view('actividad.delete', compact('actividad'));
@@ -207,5 +216,5 @@ class ActividadController extends Controller {
             return redirect('poblacion/'.$actividad->poblacion_id)->with('success', 'Actividad eliminada con éxito.');
         }
     }
-    
+
 }
